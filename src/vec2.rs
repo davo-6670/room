@@ -47,6 +47,10 @@ impl Vec2 {
     pub fn y(self) -> f32 {
         self.y
     }
+
+    pub fn xy(self) -> (f32, f32) {
+        (self.x, self.y)
+    }
 }
 
 // addition

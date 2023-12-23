@@ -1,3 +1,4 @@
+use crate::map_renderer::MapRenderer;
 use crate::ray::Ray;
 use crate::vec2::Vec2;
 
@@ -16,10 +17,17 @@ impl Hit for World {
         }
         tmp_rec
     }
+
+    fn draw(&self, renderer: &mut MapRenderer) {
+        for object in self {
+            object.draw(renderer);
+        }
+    }
 }
 
 pub trait Hit: Send + Sync {
     fn hit(&self, r: &Ray, t_min: f32, t_max: f32) -> Option<HitRecord>;
+    fn draw(&self, renderer: &mut MapRenderer);
 }
 
 pub struct HitRecord {

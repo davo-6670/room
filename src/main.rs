@@ -23,6 +23,7 @@ extern crate sdl2;
 
 fn main() {
     let world = load_map("./map.png".to_string());
+    println!("objects in world: {}", world.len());
     let ray = Ray::new(Vec2::new(1.0, 4.0), Vec2::new(20.0, 20.0));
 
     /*
@@ -45,7 +46,7 @@ fn main() {
         .build()
         .unwrap();
 
-    let mut map_renderer = MapRenderer::new(window, 10.0).unwrap();
+    let mut map_renderer = MapRenderer::new(window, 15.0).unwrap();
 
     let mut event_pump = sdl_context.event_pump().unwrap();
 

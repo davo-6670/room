@@ -22,15 +22,17 @@ use sdl2::pixels::Color;
 extern crate sdl2;
 
 fn main() {
-    let _ = load_map("./map.png".to_string());
+    let world = load_map("./map.png".to_string());
     let ray = Ray::new(Vec2::new(1.0, 4.0), Vec2::new(20.0, 20.0));
 
+    /*
     let world: World = vec![
         Box::new(Line::new(Vec2::new(10.0, 40.0), Vec2::new(30.0, 40.0))),
         Box::new(Line::new(Vec2::new(40.0, 30.0), Vec2::new(40.0, 10.0))),
         Box::new(Line::new(Vec2::new(10.0, 0.0), Vec2::new(30.0, 0.0))),
         Box::new(Line::new(Vec2::new(0.0, 10.0), Vec2::new(0.0, 30.0))),
     ];
+    */
 
     // all of the sdl2 init stuff
     let sdl_context = sdl2::init().unwrap();

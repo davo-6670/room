@@ -1,4 +1,5 @@
 use crate::map_renderer::MapRenderer;
+use crate::material::Color;
 use crate::ray::Ray;
 use crate::vec2::Vec2;
 
@@ -33,4 +34,5 @@ pub trait Hit: Send + Sync {
 pub struct HitRecord {
     pub p: Vec2,
     pub t: f32,
+    pub c: Color,
 }

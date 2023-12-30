@@ -30,6 +30,7 @@ impl MapRenderer {
             .unwrap();
     }
 
+    // something ate a lot of memory so I'm not using it + is slow
     pub fn draw_ray(&mut self, ray: &Ray) {
         let (x1, y1) = ray.origin().xy();
         let (x2, y2) = ray.at(10000.0).xy();

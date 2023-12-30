@@ -1,4 +1,5 @@
 use crate::line::Line;
+use crate::material::Color;
 use crate::{hit::World, vec2::Vec2};
 
 use image::GenericImageView;
@@ -6,6 +7,7 @@ use image::GenericImageView;
 pub fn load_map(path: String) -> World {
     let map_img = image::open(path).unwrap().into_rgb8();
     let (image_width, image_height) = map_img.dimensions();
+    let red = Color::new(255, 0, 0);
 
     let mut world = World::new();
 
@@ -18,12 +20,14 @@ pub fn load_map(path: String) -> World {
                         world.push(Box::new(Line::new(
                             Vec2::new(x as f32, y as f32),
                             Vec2::new(x as f32 + 1., y as f32),
+                            red,
                         )));
                     }
                 } else {
                     world.push(Box::new(Line::new(
                         Vec2::new(x as f32, y as f32),
                         Vec2::new(x as f32 + 1., y as f32),
+                        red,
                     )));
                 }
                 // cheking right side
@@ -32,12 +36,14 @@ pub fn load_map(path: String) -> World {
                         world.push(Box::new(Line::new(
                             Vec2::new(x as f32 + 1., y as f32),
                             Vec2::new(x as f32 + 1., y as f32 + 1.),
+                            red,
                         )));
                     }
                 } else {
                     world.push(Box::new(Line::new(
                         Vec2::new(x as f32 + 1., y as f32),
                         Vec2::new(x as f32 + 1., y as f32 + 1.),
+                        red,
                     )));
                 }
                 // checking under
@@ -46,12 +52,14 @@ pub fn load_map(path: String) -> World {
                         world.push(Box::new(Line::new(
                             Vec2::new(x as f32 + 1., y as f32 + 1.),
                             Vec2::new(x as f32, y as f32 + 1.),
+                            red,
                         )));
                     }
                 } else {
                     world.push(Box::new(Line::new(
                         Vec2::new(x as f32 + 1., y as f32 + 1.),
                         Vec2::new(x as f32, y as f32 + 1.),
+                        red,
                     )));
                 }
                 // checking left side
@@ -60,12 +68,14 @@ pub fn load_map(path: String) -> World {
                         world.push(Box::new(Line::new(
                             Vec2::new(x as f32, y as f32 + 1.),
                             Vec2::new(x as f32, y as f32),
+                            red,
                         )));
                     }
                 } else {
                     world.push(Box::new(Line::new(
                         Vec2::new(x as f32, y as f32 + 1.),
                         Vec2::new(x as f32, y as f32),
+                        red,
                     )));
                 }
 

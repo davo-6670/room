@@ -1,5 +1,6 @@
 use crate::hit::{Hit, HitRecord};
 use crate::map_renderer::MapRenderer;
+use crate::material::Color;
 use crate::ray::Ray;
 use crate::vec2::Vec2;
 
@@ -7,11 +8,12 @@ use crate::vec2::Vec2;
 pub struct Line {
     start: Vec2,
     end: Vec2,
+    color: Color,
 }
 
 impl Line {
-    pub fn new(start: Vec2, end: Vec2) -> Line {
-        Line { start, end }
+    pub fn new(start: Vec2, end: Vec2, color: Color) -> Line {
+        Line { start, end, color }
     }
 
     pub fn get_points(self) -> (Vec2, Vec2) {
@@ -35,7 +37,11 @@ impl Hit for Line {
         let u = num_u / denominator;
 
         if t > t_min && t < t_max && (0.0..=1.0).contains(&u) {
-            Some(HitRecord { p: r.at(t), t })
+            Some(HitRecord {
+                p: r.at(t),
+                t,
+                c: self.color,
+            })
         } else {
             None
         }
